@@ -5,152 +5,193 @@
     font-family: 'Roboto', sans-serif;
 }
 
-/* Colors and Fonts */
+/* Color Palette and Variables */
 :root {
     --dark-bg: #1F2937;
     --light-bg: #E5E7EB;
     --text-main: #F9FAF8;
     --button-color: #3882F6;
-    --header-font-size: 48px;
-    --header-font-weight: 900;
-    --subtext-font-size: 18px;
-    --info-header-font-size: 36px;
-    --info-header-font-weight: 900;
-    --quote-font-size: 36px;
-    --quote-font-style: italic;
+    --accent-color: #3882F6;
+    
+    /* Responsive Font Sizes */
+    --font-size-large: clamp(2rem, 5vw, 3rem);
+    --font-size-medium: clamp(1rem, 3vw, 1.25rem);
+    --font-size-small: clamp(0.875rem, 2.5vw, 1rem);
 }
 
-/* Header */
+/* Global Responsive Settings */
+html, body {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+}
+
+body {
+    line-height: 1.6;
+}
+
+/* Responsive Images */
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* Header/Navigation Styles */
 .hero {
     background-color: var(--dark-bg);
     color: var(--text-main);
-    padding: 1em;
+    padding: 1rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    flex-wrap: wrap;
 }
 
-.hero .logo img {
-    height: 50px; /* Adjust height as needed */
+.logo img {
+    max-height: 50px;
     width: auto;
 }
 
+.hero nav {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
 
 .hero nav a {
     color: var(--text-main);
-    font-size: var(--subtext-font-size);
-    margin-left: 20px;
     text-decoration: none;
+    transition: color 0.3s ease;
 }
 
-/* Main Content */
+.hero nav a:hover {
+    color: var(--accent-color);
+}
+
+/* Main Content Section */
 .main-content {
     display: flex;
     align-items: center;
-    justify-content: space-around;
-    padding: 3em;
+    justify-content: space-between;
+    padding: 3rem 1rem;
     background-color: var(--dark-bg);
     color: var(--text-main);
+    gap: 2rem;
+}
+
+.main-content .text {
+    flex: 1;
+    max-width: 50%;
 }
 
 .main-content .text h1 {
-    font-size: var(--header-font-size);
-    font-weight: var(--header-font-weight);
+    font-size: var(--font-size-large);
+    margin-bottom: 1rem;
 }
 
 .main-content .text p {
+    font-size: var(--font-size-medium);
     color: var(--light-bg);
-    font-size: var(--subtext-font-size);
+    margin-bottom: 1.5rem;
 }
 
 .main-content button {
     background-color: var(--button-color);
     color: var(--text-main);
-    padding: 10px 20px;
     border: none;
+    padding: 0.75rem 1.5rem;
     cursor: pointer;
+    transition: background-color 0.3s ease;
 }
 
-.image-container img.main-image {
-    width: 400px; /* Adjust width as needed */
-    height: auto; /* Maintains aspect ratio */
-    border-radius: 10px; /* Optional: rounds corners */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Optional: adds shadow */
+.main-content button:hover {
+    background-color: darken(var(--button-color), 10%);
 }
 
+.image-container {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+}
 
-
+.image-container img {
+    max-width: 400px;
+    width: 100%;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
 
 /* Info Section */
 .info-section {
     text-align: center;
-    padding: 3em;
+    padding: 3rem 1rem;
 }
 
 .info-section h2 {
-    font-size: var(--info-header-font-size);
-    font-weight: var(--info-header-font-weight);
+    font-size: var(--font-size-large);
+    margin-bottom: 2rem;
     color: var(--dark-bg);
 }
 
 .info-images {
     display: flex;
     justify-content: space-around;
-    gap: 1em;
+    gap: 1rem;
     flex-wrap: wrap;
-    margin-top: 1em;
 }
 
 .image-box {
-    width: 20%; /* Adjust width as needed */
-    text-align: center;
+    flex: 1;
+    min-width: 200px;
+    max-width: 250px;
+    margin: 1rem;
 }
 
 .image-box img {
-    width: 100%;
-    height: auto;
     border-radius: 8px;
     border: 2px solid var(--button-color);
+    transition: transform 0.3s ease;
+}
+
+.image-box img:hover {
+    transform: scale(1.05);
 }
 
 .image-box p {
-    margin-top: 0.5em;
-    color: var(--dark-bg);
-    font-weight: bold;
+    margin-top: 0.5rem;
+    font-size: var(--font-size-small);
 }
-
 
 /* Quote Section */
 .quote-section {
     background-color: var(--light-bg);
-    padding: 2em;
+    padding: 2rem 1rem;
     text-align: center;
 }
 
 .quote-section .quote {
-    font-size: var(--quote-font-size);
-    font-style: var(--quote-font-style);
-    color: var(--dark-bg);
-}
-
-.quote-section .author {
-    font-weight: bold;
-    color: var(--dark-bg);
+    font-size: var(--font-size-medium);
+    font-style: italic;
+    max-width: 800px;
+    margin: 0 auto;
 }
 
 /* Call to Action Section */
 .cta-section {
     background-color: var(--dark-bg);
     color: var(--text-main);
-    padding: 2em;
+    padding: 2rem 1rem;
     text-align: center;
 }
 
 .cta-section button {
     background-color: var(--button-color);
     color: var(--text-main);
-    padding: 10px 20px;
     border: none;
+    padding: 0.75rem 1.5rem;
+    margin-bottom: 1rem;
     cursor: pointer;
 }
 
@@ -159,5 +200,46 @@ footer {
     background-color: var(--dark-bg);
     color: var(--text-main);
     text-align: center;
-    padding: 1em;
+    padding: 1rem;
+}
+
+/* Responsive Breakpoints */
+@media screen and (max-width: 768px) {
+    .hero {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .hero nav {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    .main-content {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .main-content .text,
+    .image-container {
+        max-width: 100%;
+    }
+
+    .info-images {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .image-box {
+        max-width: 100%;
+        width: 80%;
+    }
+}
+
+/* Accessibility and Performance Enhancements */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation: none !important;
+        transition: none !important;
+    }
 }
